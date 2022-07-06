@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 public class Main {
 	public static void main(String[] args) {
-		String regex = "^@(?:([\\w]+))";
-			Pattern ptrn = Pattern.compile(regex);
 		Scanner scanner = new Scanner(System.in);
 		try {
 			System.out.println("Enter your login: ");
@@ -28,13 +26,8 @@ public class Main {
 				if (text.isEmpty()) break;
 
 				if (text.startsWith("@")) {
-
-					Matcher matcher = ptrn.matcher(text);
-
-					if (matcher.find()) {
-						to = matcher.group().substring(1);
-					}
-					String[] tmp = text.split(regex);
+					String[] tmp = text.split(" ", 2);
+					to = tmp[0];
 					text = tmp[1];
 				} else {
 					to = "All";
